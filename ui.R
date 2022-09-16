@@ -7,7 +7,7 @@ library(xlsx)
 library(DT)
 
 # Get Data
-akd <- read.xlsx("akd.xlsx", sheetIndex = 1)
+akd <- readRDS("akd.RDS")
 
 colnames(akd) <- c("date", "location", "fish", "kg", "price", "boat_count", 
                    "fishnet_b_count", "cycle", "paragat", "p_b_count", "fishnet", 
