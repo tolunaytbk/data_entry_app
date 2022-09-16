@@ -3,7 +3,6 @@
 library(shiny)
 library(shinythemes)
 library(data.table)
-library(xlsx)
 library(DT)
 
 # Get Data
