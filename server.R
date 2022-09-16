@@ -7,7 +7,7 @@ library(xlsx)
 library(DT)
 
 # Get Data
-akd <- read.xlsx("akd.xlsx", sheetIndex = 1)
+akd <- readRDS("akd.RDS")
 
 colnames(akd) <- c("date", "location", "fish", "kg", "price", "boat_count", 
                    "fishnet_b_count", "cycle", "paragat", "p_b_count", "fishnet", 
@@ -45,7 +45,7 @@ server <- function(input, output, session) {
       total_price      = input$kg*input$price
     )
     akd <- rbind(new_row, akd)
-    write.xlsx(akd, "akd.xlsx",col.names = TRUE, row.names = FALSE)
+    saveRDS(akd, "akd.RDS")
     
     output <- new_row
     output
@@ -55,7 +55,7 @@ server <- function(input, output, session) {
                   options = list(pageLength = 10), 
                   style = "bootstrap"))
   
-  akd <- read.xlsx("akd.xlsx", sheetIndex = 1)
+  akd <- readRDS("akd.RDS")
   
   
   output$new_row <- renderTable({
